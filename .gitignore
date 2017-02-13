@@ -1,5 +1,6 @@
 *.class
 .gitignore~
+*~
 
 # Build Directory, this is always regenerated
 build/
