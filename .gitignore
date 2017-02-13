@@ -1,12 +1,26 @@
 *.class
+.gitignore~
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+# Build Directory, this is always regenerated
+build/
+
+# Output Directory
+output/
+
+# JavaDoc directory
+docs/
 
 # Package Files #
-*.jar
-*.war
-*.ear
+lib/analyzer.jar
+lib/java112Labs.jar
+lib/*.war
+lib/*.ear
+
+# Files the tests generate
+TEST*
+
+# No big files here! This file should not be part of your project.
+bigFile.txt
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
