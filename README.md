@@ -13,12 +13,12 @@
 - Press the return key. You should see this output.
 
 
-    Cloning into 'projects'...
-    remote: Counting objects: 4, done.
-    remote: Compressing objects: 100% (4/4), done.
-    remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
-    Receiving objects: 100% (4/4), done.
-    Checking connectivity... done.
+        Cloning into 'projects'...
+        remote: Counting objects: 4, done.
+        remote: Compressing objects: 100% (4/4), done.
+        remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+        Receiving objects: 100% (4/4), done.
+        Checking connectivity... done.
 
 - Navigate into the new `projectsGH` directory and look around. 
 
