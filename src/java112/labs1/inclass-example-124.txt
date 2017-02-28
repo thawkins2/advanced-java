@@ -1,0 +1,25 @@
+public void run() {
+    BufferReaer input = null;
+    try {
+        input = new BufferReader(new FileReader("filename"));
+        
+        while (input.ready()) {
+            System.out.println(input.readLine());
+        }
+        
+        catch (FileNotFoundException fileNotFound) {
+            fileNotFound.printStackTrace();
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        } finally {
+            try {
+                if (inputReader != null) {
+                    inputReader.close();
+                }
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        }
+}
