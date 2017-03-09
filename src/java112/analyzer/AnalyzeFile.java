@@ -14,11 +14,8 @@ import java.util.*;
 public class AnalyzeFile {
 
     private static final int COUNT_OF_ARGUMENTS = 2;
+    private List<Analyzer> analyzers;
     private String inputFilePath;
-    private SummaryReport summaryReport;
-    private UniqueTokenAnalyzer uniqueTokenAnalyzer;
-    private BigWordAnalyzer bigWordAnalyzer;
-    private TokenCountAnalyzer tokenCountAnalyzer;
     private Properties properties;
 
 
@@ -55,7 +52,7 @@ public class AnalyzeFile {
 
         inputFilePath = arguments[0];
         loadProperties(arguments[1]);
-        reportObject();
+        compileAnalyzers();
         openFile(inputFilePath);
 
         writeAllOutputFiles();
@@ -78,14 +75,15 @@ public class AnalyzeFile {
 
 
     /**
-     * Method creates the object instances for summaryReport and
-     * uniqueTokenAnalyzer.
+     *
      */
-    private void reportObject() {
-        summaryReport = new SummaryReport(properties);
-        uniqueTokenAnalyzer = new UniqueTokenAnalyzer(properties);
-        bigWordAnalyzer = new BigWordAnalyzer(properties);
-        tokenCountAnalyzer = new TokenCountAnalyzer(properties);
+    public void compileAnalyzers() {
+        analyzers = new ArrayList<Analyzer>();
+
+        analyzers.add(new SummaryReport(properties));
+        analyzers.add(new UniqueTokenAnalyzer(properties));
+        analyzers.add(new BigWordAnalyzer(properties));
+        analyzers.add(new TokenCountAnalyzer(properties));
     }
 
 
@@ -136,10 +134,7 @@ public class AnalyzeFile {
     private void processTokens(String[] tokenArray) {
         for (String token : tokenArray) {
             if (!token.isEmpty()) {
-                uniqueTokenAnalyzer.processToken(token);
-                summaryReport.processToken(token);
-                bigWordAnalyzer.processToken(token);
-                tokenCountAnalyzer.processToken(token);
+                analyzerList(token);
             }
         }
     }
@@ -150,9 +145,15 @@ public class AnalyzeFile {
      * File has been processed at this point.
      */
     private void writeAllOutputFiles() {
-        summaryReport.writeOutputFile(inputFilePath);
-        uniqueTokenAnalyzer.writeOutputFile(inputFilePath);
-        bigWordAnalyzer.writeOutputFile(inputFilePath);
-        tokenCountAnalyzer.writeOutputFile(inputFilePath);
+        for (Analyzer analyzer : analyzers) {
+            analyzer.writeOutputFile(inputFilePath);
+        }
+    }
+
+
+    private void analyzerList(String token) {
+        for (Analyzer analyzer : analyzers) {
+            analyzer.processToken(token);
+        }
     }
 }

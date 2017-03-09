@@ -29,6 +29,7 @@ public class TokenCountAnalyzer implements Analyzer {
      * Constructor for TokenCountAnalyzer
      */
     public TokenCountAnalyzer() {
+        tokenCounts = new TreeMap<String, Integer>();
     }
 
 
@@ -39,7 +40,6 @@ public class TokenCountAnalyzer implements Analyzer {
     public TokenCountAnalyzer(Properties properties) {
         this();
         this.properties = properties;
-        tokenCounts = new TreeMap<String, Integer>();
     }
 
 
@@ -107,4 +107,3 @@ public class TokenCountAnalyzer implements Analyzer {
         Integer.parseInt(properties.getProperty("token.count.min"))));
     }
 }
-

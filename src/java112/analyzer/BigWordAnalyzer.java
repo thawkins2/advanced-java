@@ -20,6 +20,7 @@ public class BigWordAnalyzer implements Analyzer {
      * Constructor for BigWordAnalyzer.
      */
     public BigWordAnalyzer() {
+        bigWords = new TreeSet<String>();
     }
 
 
@@ -30,7 +31,6 @@ public class BigWordAnalyzer implements Analyzer {
     public BigWordAnalyzer(Properties properties) {
         this();
         this.properties = properties;
-        bigWords = new TreeSet<String>();
         minimumWordLength = Integer.parseInt(properties.getProperty("bigwords.minimum.length"));
     }
 
@@ -85,4 +85,3 @@ public class BigWordAnalyzer implements Analyzer {
         }
     }
 }
-
