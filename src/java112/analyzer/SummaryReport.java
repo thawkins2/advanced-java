@@ -18,14 +18,14 @@ public class SummaryReport implements Analyzer {
     private Properties properties;
 
     /** 
-    * Empty constructor
+    * Empty constructor for Summary Report.
     */
     public SummaryReport() {
 
     }
 
     /**
-     * Properties constructor for SummaryReport
+     * Properties constructor for SummaryReport.
      */
     public SummaryReport(Properties properties) {
         this();

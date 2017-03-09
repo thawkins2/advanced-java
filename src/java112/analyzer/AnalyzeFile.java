@@ -17,17 +17,19 @@ public class AnalyzeFile {
     private String inputFilePath;
     private SummaryReport summaryReport;
     private UniqueTokenAnalyzer uniqueTokenAnalyzer;
+    private BigWordAnalyzer bigWordAnalyzer;
+    private TokenCountAnalyzer;
     private Properties properties;
     
     /** 
-     * Constructor for the AnalyzeFile class
+     * Constructor for the AnalyzeFile class.
      */
     public AnalyzeFile() {
         
     }
     
     /** 
-     * Properties constructor for the AnalyzeFile class
+     * Properties constructor for the AnalyzeFile class.
      */
     public AnalyzeFile(Properties properties) {
         this();
@@ -59,7 +61,7 @@ public class AnalyzeFile {
     }
     
     /**
-    * Loads the properties file for AnalyzeFile class
+    * Loads the properties file for AnalyzeFile class.
     */
     public void loadProperties(String propertiesFilePath)  {
         properties = new Properties();
@@ -80,6 +82,7 @@ public class AnalyzeFile {
     private void reportObject() {
         summaryReport = new SummaryReport(properties);
         uniqueTokenAnalyzer = new UniqueTokenAnalyzer(properties);
+        bigWordAnalyzer = new BigWordAnalyzer(properties);
     }
 
 
@@ -132,6 +135,7 @@ public class AnalyzeFile {
             if (!token.isEmpty()) {
                 uniqueTokenAnalyzer.processToken(token);
                 summaryReport.processToken(token);
+                bigWordAnalyzer.processToken(token);
             }
         }
     }
@@ -144,5 +148,6 @@ public class AnalyzeFile {
     private void writeAllOutputFiles() {
         summaryReport.writeOutputFile(inputFilePath);
         uniqueTokenAnalyzer.writeOutputFile(inputFilePath);
+        bigWordAnalyzer.writeOutputFile(inputFilePath);
     }
 }

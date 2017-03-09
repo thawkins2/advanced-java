@@ -17,14 +17,14 @@ public class UniqueTokenAnalyzer implements Analyzer {
     private Properties properties;
 
     /** 
-    * Empty constructor
+    * Empty constructor for UniqueTokenAnalyzer.
     */
     public UniqueTokenAnalyzer() {
 
     }
 
     /**
-     * Properties constructor for UniqueTokenAnalyzer
+     * Properties constructor for UniqueTokenAnalyzer.
      */
     public UniqueTokenAnalyzer(Properties properties) {
         this();
