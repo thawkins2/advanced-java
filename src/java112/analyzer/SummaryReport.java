@@ -17,12 +17,13 @@ public class SummaryReport implements Analyzer {
     private int totalTokensCount;
     private Properties properties;
 
-    /** 
-    * Empty constructor for Summary Report.
-    */
-    public SummaryReport() {
 
+    /**
+     * Empty constructor for Summary Report.
+     */
+    public SummaryReport() {
     }
+
 
     /**
      * Properties constructor for SummaryReport.

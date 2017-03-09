@@ -1,7 +1,9 @@
 package java112.analyzer;
 
+
 import java.io.*;
 import java.util.*;
+
 
 /**
  * The main class for the Analyzer program. Main method will instantiate an
@@ -12,13 +14,13 @@ import java.util.*;
  * class AnalyzeDriver
  */
 public class AnalyzerDriver {
-    
-    /** 
+
+    /**
      * Constructor for the AnalyzeDriver class
      */
     public AnalyzerDriver() {
-        
     }
+
 
     /**
      * Driver for the Analyzer program. User adds file input path in as a

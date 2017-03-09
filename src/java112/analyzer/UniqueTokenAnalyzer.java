@@ -16,12 +16,13 @@ public class UniqueTokenAnalyzer implements Analyzer {
     private Set<String> uniqueTokensList;
     private Properties properties;
 
-    /** 
-    * Empty constructor for UniqueTokenAnalyzer.
-    */
-    public UniqueTokenAnalyzer() {
 
+    /**
+     * Empty constructor for UniqueTokenAnalyzer.
+     */
+    public UniqueTokenAnalyzer() {
     }
+
 
     /**
      * Properties constructor for UniqueTokenAnalyzer.

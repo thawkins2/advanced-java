@@ -18,17 +18,18 @@ public class AnalyzeFile {
     private SummaryReport summaryReport;
     private UniqueTokenAnalyzer uniqueTokenAnalyzer;
     private BigWordAnalyzer bigWordAnalyzer;
-    private TokenCountAnalyzer;
+    private TokenCountAnalyzer tokenCountAnalyzer;
     private Properties properties;
-    
-    /** 
+
+
+    /**
      * Constructor for the AnalyzeFile class.
      */
     public AnalyzeFile() {
-        
     }
-    
-    /** 
+
+
+    /**
      * Properties constructor for the AnalyzeFile class.
      */
     public AnalyzeFile(Properties properties) {
@@ -59,17 +60,18 @@ public class AnalyzeFile {
 
         writeAllOutputFiles();
     }
-    
+
+
     /**
-    * Loads the properties file for AnalyzeFile class.
-    */
-    public void loadProperties(String propertiesFilePath)  {
+     * Loads the properties file for AnalyzeFile class.
+     */
+    public void loadProperties(String propertiesFilePath) {
         properties = new Properties();
         try {
             properties.load(this.getClass().getResourceAsStream(propertiesFilePath));
-        } catch(IOException ioException) {
+        } catch (IOException ioException) {
             ioException.printStackTrace();
-        } catch(Exception exception) {
+        } catch (Exception exception) {
             exception.printStackTrace();
         }
     }
@@ -83,6 +85,7 @@ public class AnalyzeFile {
         summaryReport = new SummaryReport(properties);
         uniqueTokenAnalyzer = new UniqueTokenAnalyzer(properties);
         bigWordAnalyzer = new BigWordAnalyzer(properties);
+        tokenCountAnalyzer = new TokenCountAnalyzer(properties);
     }
 
 
@@ -136,6 +139,7 @@ public class AnalyzeFile {
                 uniqueTokenAnalyzer.processToken(token);
                 summaryReport.processToken(token);
                 bigWordAnalyzer.processToken(token);
+                tokenCountAnalyzer.processToken(token);
             }
         }
     }
@@ -149,5 +153,6 @@ public class AnalyzeFile {
         summaryReport.writeOutputFile(inputFilePath);
         uniqueTokenAnalyzer.writeOutputFile(inputFilePath);
         bigWordAnalyzer.writeOutputFile(inputFilePath);
+        tokenCountAnalyzer.writeOutputFile(inputFilePath);
     }
 }
