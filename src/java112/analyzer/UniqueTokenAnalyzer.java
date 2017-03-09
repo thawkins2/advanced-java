@@ -14,12 +14,21 @@ public class UniqueTokenAnalyzer implements Analyzer {
 
     // Only allowed instance variable
     private Set<String> uniqueTokensList;
+    private Properties properties;
 
+    /** 
+    * Empty constructor
+    */
+    public UniqueTokenAnalyzer() {
+
+    }
 
     /**
-     * Constructor for UniqueTokenAnalyzer
+     * Properties constructor for UniqueTokenAnalyzer
      */
-    public UniqueTokenAnalyzer() {
+    public UniqueTokenAnalyzer(Properties properties) {
+        this();
+        this.properties = properties;
         uniqueTokensList = new TreeSet<String>();
     }
 
@@ -49,9 +58,9 @@ public class UniqueTokenAnalyzer implements Analyzer {
      * @param inputFilePath Text file
      * @param outputFilePath Unique token report
      */
-    public void writeOutputFile(String inputFilePath, String outputFilePath) {
+    public void writeOutputFile(String inputFilePath) {
 
-        try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(outputFilePath)))
+        try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(properties.getProperty("output.dir") + properties.getProperty("output.file.unique"))))
         ) {
 
             createTokenList(out);

@@ -15,12 +15,21 @@ public class SummaryReport implements Analyzer {
 
     // Only allowed instance variable
     private int totalTokensCount;
+    private Properties properties;
 
+    /** 
+    * Empty constructor
+    */
+    public SummaryReport() {
+
+    }
 
     /**
-     * Constructor for SummaryReport
+     * Properties constructor for SummaryReport
      */
-    public SummaryReport() {
+    public SummaryReport(Properties properties) {
+        this();
+        this.properties = properties;
     }
 
 
@@ -49,9 +58,9 @@ public class SummaryReport implements Analyzer {
      * @param inputFilePath Text file
      * @param outputFilePath Summary report
      */
-    public void writeOutputFile(String inputFilePath, String outputFilePath) {
+    public void writeOutputFile(String inputFilePath) {
 
-        try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(outputFilePath)))
+        try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(properties.getProperty("output.dir") + properties.getProperty("output.file.summary"))))
         ) {
 
             buildFile(inputFilePath, out);
@@ -71,9 +80,9 @@ public class SummaryReport implements Analyzer {
      * @param out Output file stream and path
      */
     private void buildFile(String inputFilePath, PrintWriter out) {
-        out.println("Application: UniqueText");
-        out.println("Author: Thomas Hawkins, T-H 2:30-4:15");
-        out.println("Email: thawkins2@madisoncollege.edu");
+        out.println("Application: " + properties.getProperty("application.name"));
+        out.println("Author: " + properties.getProperty("author"));
+        out.println("Email: " + properties.getProperty("author.email.address"));
         out.println("Input File: " + inputFilePath);
         out.println("Analyzed on: " + new Date());
         out.println("Total token count: " + getTotalTokensCount());

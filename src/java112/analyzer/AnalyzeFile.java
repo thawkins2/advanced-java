@@ -13,10 +13,26 @@ import java.util.*;
  */
 public class AnalyzeFile {
 
-    private static final int COUNT_OF_ARGUMENTS = 1;
+    private static final int COUNT_OF_ARGUMENTS = 2;
     private String inputFilePath;
     private SummaryReport summaryReport;
     private UniqueTokenAnalyzer uniqueTokenAnalyzer;
+    private Properties properties;
+    
+    /** 
+     * Constructor for the AnalyzeFile class
+     */
+    public AnalyzeFile() {
+        
+    }
+    
+    /** 
+     * Properties constructor for the AnalyzeFile class
+     */
+    public AnalyzeFile(Properties properties) {
+        this();
+        this.properties = properties;
+    }
 
 
     /**
@@ -35,10 +51,25 @@ public class AnalyzeFile {
 
 
         inputFilePath = arguments[0];
+        loadProperties(arguments[1]);
         reportObject();
         openFile(inputFilePath);
 
         writeAllOutputFiles();
+    }
+    
+    /**
+    * Loads the properties file for AnalyzeFile class
+    */
+    public void loadProperties(String propertiesFilePath)  {
+        properties = new Properties();
+        try {
+            properties.load(this.getClass().getResourceAsStream(propertiesFilePath));
+        } catch(IOException ioException) {
+            ioException.printStackTrace();
+        } catch(Exception exception) {
+            exception.printStackTrace();
+        }
     }
 
 
@@ -47,8 +78,8 @@ public class AnalyzeFile {
      * uniqueTokenAnalyzer.
      */
     private void reportObject() {
-        summaryReport = new SummaryReport();
-        uniqueTokenAnalyzer = new UniqueTokenAnalyzer();
+        summaryReport = new SummaryReport(properties);
+        uniqueTokenAnalyzer = new UniqueTokenAnalyzer(properties);
     }
 
 
@@ -111,7 +142,7 @@ public class AnalyzeFile {
      * File has been processed at this point.
      */
     private void writeAllOutputFiles() {
-        summaryReport.writeOutputFile(inputFilePath, "output/summary_report.txt");
-        uniqueTokenAnalyzer.writeOutputFile(inputFilePath, "output/unique_tokens.txt");
+        summaryReport.writeOutputFile(inputFilePath);
+        uniqueTokenAnalyzer.writeOutputFile(inputFilePath);
     }
 }

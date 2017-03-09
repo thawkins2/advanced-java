@@ -5,11 +5,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
-/**
- *  This is part of a lab and is the first servlet for the course.
- *
- *@author    eknapp
- */
+
 @WebServlet(
     name = "trivialServlet", 
     urlPatterns = { "/trivial", "/simple" }

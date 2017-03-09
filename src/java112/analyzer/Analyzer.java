@@ -17,7 +17,7 @@ public interface Analyzer{
     /**
      * Method to write out of summary report and unique token report.
      * @param inputFilePath input file
-     * @param outputFilePath path for report files
+     * 
      */
-    void writeOutputFile(String inputFilePath, String outputFilePath);
+    void writeOutputFile(String inputFilePath);
 }
