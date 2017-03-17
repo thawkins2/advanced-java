@@ -13,6 +13,8 @@ import javax.servlet.annotation.*;
 )
 public class First112Servlet extends HttpServlet {
     
+    private Properties properties;
+    
      /**
      *  Handles HTTP GET requests.
      *
@@ -39,13 +41,34 @@ public class First112Servlet extends HttpServlet {
         out.print("</HEADER></NAV></DIV></ul>");
         out.print("<BODY>");
         out.print("<h1>Project 2 Servlet!</h1>");
-        System.out.println("Is this logging?");
-        log("Is this logging?");
+        out.print("<table><tr><th>Author</th><th>Email</th><th>Course Name</th>");
+        out.print("<th>Course Time</th><th>Professor</th><th>Course Description</th></tr>");
+        out.print("<tr><td>" + properties.getProperty("author") + "</td>");
+        out.print("<td>" + properties.getProperty("email") + "</td>");
+        out.print("<td>" + properties.getProperty("course.title") + "</td>");
+        out.print("<td>" + properties.getProperty("course.time") + "</td>");
+        out.print("<td>" + properties.getProperty("instructor") + "</td>");
+        out.print("<td>" + properties.getProperty("project.description") + "</td>");
+        out.print("</tr></table>");
         out.print("</BODY>");
         out.print("</HTML>");
         out.close();
         
     }
-
+    
+    public void init(ServletConfig config) throws ServletException {
+        loadProperties("/project2.properties");
+    }
+    
+    public void loadProperties(String propertiesFilePath)  {
+        properties = new Properties();
+        try {
+            properties.load(this.getClass().getResourceAsStream(propertiesFilePath));
+        } catch(IOException ioException) {
+            ioException.printStackTrace();
+        } catch(Exception exception) {
+            exception.printStackTrace();
+        }
+    }
 
 }
