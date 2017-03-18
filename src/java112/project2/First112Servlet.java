@@ -36,11 +36,11 @@ public class First112Servlet extends HttpServlet {
         out.print("<script type='text/javascript' src='js/modernizr-1.5.min.js'></script>");
         out.print("</HEAD>");
         out.print("<HEADER><NAV><DIV id='menubar'><ul id='nav'>");
+        out.print("<h1>Project 2 Servlet!</h1>");
         out.print("<li><a href='/java112'>Home</a></li>");
         out.print("<li class='current'><a href=''>Project 2 Servlet</a></li>");
         out.print("</HEADER></NAV></DIV></ul>");
         out.print("<BODY>");
-        out.print("<h1>Project 2 Servlet!</h1>");
         out.print("<table><tr><th>Author</th><th>Email</th><th>Course Name</th>");
         out.print("<th>Course Time</th><th>Professor</th><th>Course Description</th></tr>");
         out.print("<tr><td>" + properties.getProperty("author") + "</td>");
@@ -50,7 +50,7 @@ public class First112Servlet extends HttpServlet {
         out.print("<td>" + properties.getProperty("instructor") + "</td>");
         out.print("<td>" + properties.getProperty("project.description") + "</td>");
         out.print("</tr></table>");
-        out.print("<a href='/java112'><img src='/public_html/images/sql-santa.jpeg' alt='image' ></a>");
+        out.print("<a href='/java112'><img src='" + request.getContextPath() + "/images/sql-santa.jpeg' title='Home' alt='image' ></a>");
         out.print("</BODY>");
         out.print("</HTML>");
         out.close();
