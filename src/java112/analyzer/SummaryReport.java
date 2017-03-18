@@ -27,6 +27,7 @@ public class SummaryReport implements Analyzer {
 
     /**
      * Properties constructor for SummaryReport.
+     * @param properties Property file
      */
     public SummaryReport(Properties properties) {
         this();
@@ -57,7 +58,6 @@ public class SummaryReport implements Analyzer {
      * Uses printwriter to open a new stream to writeout a summary report file.
      * Uses a try catch block for exception handling.
      * @param inputFilePath Text file
-     * @param outputFilePath Summary report
      */
     public void writeOutputFile(String inputFilePath) {
 

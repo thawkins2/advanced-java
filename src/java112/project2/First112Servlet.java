@@ -31,7 +31,7 @@ public class First112Servlet extends HttpServlet {
         // set the response type before sending data
         PrintWriter  out  = response.getWriter();
         out.print("<HTML>");
-        out.print("<HEAD><TITLE>Frist 112 Servlet</TITLE>");
+        out.print("<HEAD><TITLE>First 112 Servlet</TITLE>");
         out.print("<link rel='stylesheet' type='text/css' href='css/style.css' />");
         out.print("<script type='text/javascript' src='js/modernizr-1.5.min.js'></script>");
         out.print("</HEAD>");
@@ -50,6 +50,7 @@ public class First112Servlet extends HttpServlet {
         out.print("<td>" + properties.getProperty("instructor") + "</td>");
         out.print("<td>" + properties.getProperty("project.description") + "</td>");
         out.print("</tr></table>");
+        out.print("<a href='/java112'><img src='/public_html/images/sql-santa.jpeg' alt='image' ></a>");
         out.print("</BODY>");
         out.print("</HTML>");
         out.close();

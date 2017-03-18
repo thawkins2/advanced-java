@@ -19,6 +19,7 @@ public class TokenCountAnalyzer implements Analyzer {
 
     /**
      * Get method for the token count variable
+     * @return tokenCounts Map with each token and the number of times it appears.
      */
     public Map getTokenCounts() {
         return tokenCounts;
@@ -92,7 +93,7 @@ public class TokenCountAnalyzer implements Analyzer {
      * @param token Token key used to increment Integer.
      */
     private void incrementCount(String token) {
-        int newCount = (int)tokenCounts.get(token);
+        Integer newCount = tokenCounts.get(token);
         newCount++;
         tokenCounts.put(token, newCount);
     }

@@ -6,6 +6,8 @@ import java.util.*;
 
 
 /**
+ * Uses the bigwords.minimum.length value in the properties to create a set of words
+ * at least that value in length. After populating the set, it's written out to a text file.
  * @author Thomas Hawkins
  * BigWordAnalyzer
  */

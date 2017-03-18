@@ -21,16 +21,17 @@ public class UniqueTokenAnalyzer implements Analyzer {
      * Empty constructor for UniqueTokenAnalyzer.
      */
     public UniqueTokenAnalyzer() {
+        uniqueTokensList = new TreeSet<String>();
     }
 
 
     /**
      * Properties constructor for UniqueTokenAnalyzer.
+     * @param properties Properties file for analyzer
      */
     public UniqueTokenAnalyzer(Properties properties) {
         this();
         this.properties = properties;
-        uniqueTokensList = new TreeSet<String>();
     }
 
 
@@ -57,7 +58,6 @@ public class UniqueTokenAnalyzer implements Analyzer {
      * create a new file if it doesn't exist or overwrite an existing one. Uses a
      * try catch block for exception handling.
      * @param inputFilePath Text file
-     * @param outputFilePath Unique token report
      */
     public void writeOutputFile(String inputFilePath) {
 

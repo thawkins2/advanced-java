@@ -28,6 +28,7 @@ public class AnalyzeFile {
 
     /**
      * Properties constructor for the AnalyzeFile class.
+     * @param properties Property file for the program
      */
     public AnalyzeFile(Properties properties) {
         this();
@@ -61,6 +62,7 @@ public class AnalyzeFile {
 
     /**
      * Loads the properties file for AnalyzeFile class.
+     * @param propertiesFilePath File path for property file.
      */
     public void loadProperties(String propertiesFilePath) {
         properties = new Properties();
@@ -75,7 +77,8 @@ public class AnalyzeFile {
 
 
     /**
-     *
+     * List of all analyzers for this Analyzer program. Loop through list while
+     * calling functions found in each class.
      */
     public void compileAnalyzers() {
         analyzers = new ArrayList<Analyzer>();
@@ -151,6 +154,10 @@ public class AnalyzeFile {
     }
 
 
+    /**
+     * Loops through the analyzer list and processes the individual token passed in.
+     * @param token Individual token to be processed.
+     */
     private void analyzerList(String token) {
         for (Analyzer analyzer : analyzers) {
             analyzer.processToken(token);
