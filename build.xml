@@ -1,6 +1,7 @@
 <!--
     10-152-112 Advanced Java
     build.xml for project 2
+    Updated to fix the jdoc target
 -->
 
 <project default="deploy">
@@ -9,8 +10,8 @@
   <property name="project_home" value="${user_home}/projects" />
   <property name="tomcat" value="${user_home}/tomcat" />
   <property name="src" value="src"/>
-  <property name= "project2" value="${src}/java112/project2" />
-  <property name= "labs2" value="${src}/java112/labs2" />
+  <property name="project2" value="${src}/java112/project2" />
+  <property name="labs2" value="${src}/java112/labs2" />
   <property name="config" value="config"/>
   <property name="build" value="build"/>
   <property name="dist" value="dist"/>
@@ -51,6 +52,7 @@
     <!-- Delete the ${build} and ${dist} directory trees -->
     <delete dir="${build}"/>
     <delete dir="${dist}"/>
+    <delete file="${analyzer_lib}" />
   </target>
 
   <target name="compile_analyzer" depends="init">
@@ -78,7 +80,13 @@
            destdir="${build}/classes" 
            extdirs="${lib}" 
            verbose="false" 
-           excludes="*.jsp,*.html,*.xml, java112/analyzer/**, java112/tests/**, java112/demos/**"
+           excludes="*.jsp,
+                     *.html,
+                     *.xml,
+                     java112/analyzer/**,
+                     java112/tests/**,
+                     java112/demos/**,
+                     java112/project2/**"
            deprecation="on" 
            debug="on" 
            includeAntRuntime="false" />
@@ -90,7 +98,14 @@
           destdir="${build}/classes"
           extdirs="${lib}"
           verbose="false"
-          excludes="*.jsp,*.html,*.xml, java112/analyzer/**, java112/tests/**, java112/labs1/**, java112/labs2/**, java112/project2/**"
+          excludes="*.jsp,
+                    *.html,
+                    *.xml,
+                    java112/analyzer/**,
+                    java112/tests/**,
+                    java112/labs1/**,
+                    java112/labs2/**,
+                    java112/project2/**"
           deprecation="on"
           debug="on"
           includeAntRuntime="false" />
@@ -120,14 +135,20 @@
       destdir="${web_classes}"
       extdirs="${lib}"
       verbose="false"
-      excludes="*.jsp,*.html,*.xml, java112/analyzer/** java112/labs1/**, java112/labs2/**, java112/tests/**"
+      excludes="*.jsp,
+                *.html,
+                *.xml,
+                java112/analyzer/**,
+                java112/labs1/**,
+                java112/labs2/**,
+                java112/tests/**"
       deprecation="on"
       debug="on"
       includeAntRuntime="false"
     />
   </target>
 
-  <target name="build_web" depends="compile_web">
+  <target name="build_web" depends="backup, compile_web">
 
     <copy todir="${web_classes}">
       <fileset dir="${config}"/>
@@ -175,16 +196,21 @@
  <!--########################################################################
     |   jdoc - Generates JavaDoc                                               |
     #########################################################################-->
-  <target name="jdoc">
-    <javadoc packagenames="java112.analyzer.*, java112.labs1.*, java112.demos.*, java112.labs2.*, java112.project2.*" 
-             sourcepath="${src}" 
-             defaultexcludes="yes" 
-             destdir="docs/project_api" 
-             author="true" 
-             version="true"
-             access="private">
-    </javadoc>
-  </target>
+ <target name="jdoc">
+   <javadoc packagenames="java112.analyzer.*, 
+                          java112.labs1.*,
+                          java112.demos.*,
+                          java112.labs2.*,
+                          java112.project2.*" 
+            sourcepath="${src}"
+            classpath="${lib}/servlet-api.jar"
+            defaultexcludes="yes" 
+            destdir="docs/project_api" 
+            author="true" 
+            version="true"
+            access="private">
+   </javadoc>
+ </target>
 
 <!--########################################################################
     |   submit_project - Compress project and place in public dropbox                     |
