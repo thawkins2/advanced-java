@@ -50,7 +50,7 @@ public class First112Servlet extends HttpServlet {
         out.print("<td>" + properties.getProperty("instructor") + "</td>");
         out.print("<td>" + properties.getProperty("project.description") + "</td>");
         out.print("</tr></table>");
-        out.print("<a href='/java112'><img src='" + request.getContextPath() + "/images/sql-santa.jpeg' title='Home' alt='image' ></a>");
+        out.print("<a href='/java112'><img src='/java112/images/sql-santa.jpeg' title='Home' alt='image' ></a>");
         out.print("</BODY>");
         out.print("</HTML>");
         out.close();
