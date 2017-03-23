@@ -4,6 +4,7 @@
 
 # Build Directory, this is always regenerated
 build/
+dist/
 
 # Output Directory
 output/
