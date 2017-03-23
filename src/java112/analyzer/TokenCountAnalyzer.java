@@ -16,16 +16,6 @@ public class TokenCountAnalyzer implements Analyzer {
     private Properties properties;
     private Map<String, Integer> tokenCounts;
 
-
-    /**
-     * Get method for the token count variable
-     * @return tokenCounts Map with each token and the number of times it appears.
-     */
-    public Map getTokenCounts() {
-        return tokenCounts;
-    }
-
-
     /**
      * Constructor for TokenCountAnalyzer
      */
@@ -41,6 +31,14 @@ public class TokenCountAnalyzer implements Analyzer {
     public TokenCountAnalyzer(Properties properties) {
         this();
         this.properties = properties;
+    }
+    
+    /**
+     * Get method for the token count variable
+     * @return tokenCounts Map with each token and the number of times it appears.
+     */
+    public Map getTokenCounts() {
+        return tokenCounts;
     }
 
 
@@ -63,7 +61,9 @@ public class TokenCountAnalyzer implements Analyzer {
      * @param inputFilePath input file
      */
     public void writeOutputFile(String inputFilePath) {
-        try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(properties.getProperty("output.dir") + properties.getProperty("output.file.token.count"))))
+        try (PrintWriter out = new PrintWriter(new BufferedWriter(
+                new FileWriter(properties.getProperty("output.dir")
+                + properties.getProperty("output.file.token.count"))))
         ) {
             createTokenCountList(out);
         } catch (FileNotFoundException fileNotFound) {

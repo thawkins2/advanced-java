@@ -13,7 +13,7 @@ import java.util.*;
  */
 public class AnalyzeFile {
 
-    private static final int COUNT_OF_ARGUMENTS = 2;
+    private static final int VALID_COUNT_OF_ARGUMENTS = 2;
     private List<Analyzer> analyzers;
     private String inputFilePath;
     private Properties properties;
@@ -45,7 +45,7 @@ public class AnalyzeFile {
      */
     public void runAnalysis(String[] arguments) {
 
-        if (arguments.length != COUNT_OF_ARGUMENTS) {
+        if (arguments.length != VALID_COUNT_OF_ARGUMENTS) {
             System.out.println("Missing arguments");
             return;
         }

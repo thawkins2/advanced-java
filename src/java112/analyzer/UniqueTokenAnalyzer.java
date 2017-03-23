@@ -61,7 +61,9 @@ public class UniqueTokenAnalyzer implements Analyzer {
      */
     public void writeOutputFile(String inputFilePath) {
 
-        try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(properties.getProperty("output.dir") + properties.getProperty("output.file.unique"))))
+        try (PrintWriter out = new PrintWriter(new BufferedWriter(
+                new FileWriter(properties.getProperty("output.dir")
+                + properties.getProperty("output.file.unique"))))
         ) {
 
             createTokenList(out);

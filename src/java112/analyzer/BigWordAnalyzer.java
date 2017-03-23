@@ -63,7 +63,9 @@ public class BigWordAnalyzer implements Analyzer {
      *
      */
     public void writeOutputFile(String inputFilePath) {
-        try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(properties.getProperty("output.dir") + properties.getProperty("output.file.bigwords"))))
+        try (PrintWriter out = new PrintWriter(new BufferedWriter(
+                new FileWriter(properties.getProperty("output.dir")
+                + properties.getProperty("output.file.bigwords"))))
         ) {
 
             createBigWordList(out);
