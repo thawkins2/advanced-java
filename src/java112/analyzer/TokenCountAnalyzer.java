@@ -103,7 +103,6 @@ public class TokenCountAnalyzer implements Analyzer {
      * @param token Token to be added to TreeMap.
      */
     private void addNewMapKey(String token) {
-        tokenCounts.put(token, new Integer(
-        Integer.parseInt(properties.getProperty("token.count.min"))));
+        tokenCounts.put(token, new Integer(1));
     }
 }
