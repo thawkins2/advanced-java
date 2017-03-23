@@ -65,7 +65,6 @@ public class TokenCountAnalyzer implements Analyzer {
     public void writeOutputFile(String inputFilePath) {
         try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(properties.getProperty("output.dir") + properties.getProperty("output.file.token.count"))))
         ) {
-
             createTokenCountList(out);
         } catch (FileNotFoundException fileNotFound) {
             fileNotFound.printStackTrace();
