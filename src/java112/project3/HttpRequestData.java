@@ -30,6 +30,7 @@ public class HttpRequestData {
 
     /**
      * Returns the value of remoteComputerRequest.
+     @return remoteComputerRequest
      */
     public String getRemoteComputerRequest() {
         return remoteComputerRequest;
@@ -47,6 +48,7 @@ public class HttpRequestData {
 
     /**
      * Returns the value of remoteComputerAddress.
+     @return remoteComputerAddress
      */
     public String getRemoteComputerAddress() {
         return remoteComputerAddress;
@@ -64,6 +66,7 @@ public class HttpRequestData {
 
     /**
      * Returns the value of httpMethodRequest.
+     @return httpMethodRequest
      */
     public String getHttpMethodRequest() {
         return httpMethodRequest;
@@ -81,6 +84,7 @@ public class HttpRequestData {
 
     /**
      * Returns the value of requestUri.
+     @return requestUri
      */
     public String getRequestUri() {
         return requestUri;
@@ -98,6 +102,7 @@ public class HttpRequestData {
 
     /**
      * Returns the value of requestUrl.
+     @return requestUrl
      */
     public String getRequestUrl() {
         return requestUrl;
@@ -115,6 +120,7 @@ public class HttpRequestData {
 
     /**
      * Returns the value of requestProtocol.
+     @return requestProtocol
      */
     public String getRequestProtocol() {
         return requestProtocol;
@@ -132,6 +138,7 @@ public class HttpRequestData {
 
     /**
      * Returns the value of serverName.
+     @return serverName
      */
     public String getServerName() {
         return serverName;
@@ -149,6 +156,7 @@ public class HttpRequestData {
 
     /**
      * Returns the value of serverPort.
+     @return serverPort
      */
     public int getServerPort() {
         return serverPort;
@@ -166,6 +174,7 @@ public class HttpRequestData {
 
     /**
      * Returns the value of serverLocation.
+     @return serverLocation
      */
     public String getServerLocation() {
         return serverLocation;
@@ -183,6 +192,7 @@ public class HttpRequestData {
 
     /**
      * Returns the value of queryString.
+     @return queryString
      */
     public String getQueryString() {
         return queryString;
@@ -200,6 +210,7 @@ public class HttpRequestData {
 
     /**
      * Returns the value of queryParameter.
+     @return queryParameter
      */
     public String getQueryParameter() {
         return queryParameter;
@@ -217,6 +228,7 @@ public class HttpRequestData {
 
     /**
      * Returns the value of requestHeader.
+     @return requestHeader
      */
     public String getRequestHeader() {
         return requestHeader;
@@ -225,7 +237,7 @@ public class HttpRequestData {
 
     /**
      * Sets the value of User-Agent.
-     * @param User-Agent The value to assign requestHeader.
+     * @param requestHeader The value to assign requestHeader.
      */
     public void setRequestHeader(String requestHeader) {
         this.requestHeader = requestHeader;
