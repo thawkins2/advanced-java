@@ -162,7 +162,7 @@ public class KeywordAnalyzer implements Analyzer {
             sb.append(location);
             sb.append(", ");
         }
-
+        
         int i = 0;
         while ((i = sb.indexOf(" ", i + 80)) != -1) {
             sb.replace(i, i + 1, "\n");
