@@ -143,7 +143,7 @@ public class TokenSizeAnalyzer implements Analyzer {
      * @return string of asterisks to be output
      */
     private String getAsterisks(Integer size) {
-        double calcAsterisks = maximumSize / 73;
+        double calcAsterisks = maximumSize / 73.0;
         int numOfAsterisks = (int)Math.ceil(size / calcAsterisks);
         return new String(new char [numOfAsterisks] ).replace("\0", "*");
     }

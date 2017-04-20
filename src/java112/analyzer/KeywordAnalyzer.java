@@ -64,7 +64,7 @@ public class KeywordAnalyzer implements Analyzer {
     public void writeOutputFile(String inputFilePath) {
         try (PrintWriter out = new PrintWriter(new BufferedWriter(
         new FileWriter(properties.getProperty("output.dir")
-        + properties.getProperty("output.file.keyword.tokens"))))
+        + properties.getProperty("output.file.keyword"))))
         ) {
             createKeywordFile(out);
         } catch (FileNotFoundException fileNotFound) {
@@ -81,8 +81,7 @@ public class KeywordAnalyzer implements Analyzer {
      * Opens keyword file using properties and instantiated map with each keyword.
      */
     private void openKeywordsFile() {
-        String inputFilePath = properties.getProperty("output.dir.up")
-        + properties.getProperty("output.file.keywords");
+        String inputFilePath = properties.getProperty("file.path.keywords");
         try (BufferedReader input = new BufferedReader(new FileReader(inputFilePath))
         ) {
             readFile(input);
@@ -144,7 +143,6 @@ public class KeywordAnalyzer implements Analyzer {
         for (Map.Entry <String, List <Integer>> entry : keywordMap.entrySet()) {
             String keywordOutput = formatOutput(entry);
             out.println(keywordOutput);
-            out.println();
         }
     }
 
@@ -158,8 +156,8 @@ public class KeywordAnalyzer implements Analyzer {
     private String formatOutput(Map.Entry <String, List <Integer>> entry) {
         String keywordOutput;
         StringBuilder sb = new StringBuilder();
-        sb.append(entry.getKey() + " = [");
-
+        sb.append(entry.getKey() + " =\n[");
+        
         for (Integer location : entry.getValue()) {
             sb.append(location);
             sb.append(", ");
