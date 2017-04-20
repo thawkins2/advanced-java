@@ -81,16 +81,23 @@ public class TokenSizeAnalyzer implements Analyzer {
     }
     
     private void createHistogramReport(PrintWriter out) {
-        double calcAsterisks = maximumSize / 73;
+        //double calcAsterisks = maximumSize / 73;
         
         
         for (Map.Entry<Integer, Integer> size : tokenSizes.entrySet()) {
-            int numOfAsterisks = (int)Math.ceil(size.getValue() / calcAsterisks);
+            //int numOfAsterisks = (int)Math.ceil(size.getValue() / calcAsterisks);
             
-            String asterisks = new String(new char[numOfAsterisks]).replace("\0", "*");
+            //String asterisks = new String(new char[numOfAsterisks]).replace("\0", "*");
+            String asterisks = getAsterisks(size.getValue());
             
             out.println(size.getKey() + "\t" + asterisks);
         }
+    }
+    
+    private String getAsterisks(Integer size) {
+        double calcAsterisks = maximumSize / 73;
+        int numOfAsterisks = (int)Math.ceil(size / calcAsterisks);
+        return new String(new char[numOfAsterisks]).replace("\0", "*");
     }
     
     private void findMaximumSize() {
