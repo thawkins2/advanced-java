@@ -87,6 +87,8 @@ public class AnalyzeFile {
         analyzers.add(new UniqueTokenAnalyzer(properties));
         analyzers.add(new BigWordAnalyzer(properties));
         analyzers.add(new TokenCountAnalyzer(properties));
+        analyzers.add(new TokenSizeAnalyzer(properties));
+        analyzers.add(new KeywordAnalyzer(properties));
     }
 
 
