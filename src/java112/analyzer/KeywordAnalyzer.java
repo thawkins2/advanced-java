@@ -167,9 +167,12 @@ public class KeywordAnalyzer implements Analyzer {
         while ((i = sb.indexOf(" ", i + 80)) != -1) {
             sb.replace(i, i + 1, "\n");
         }
-
-        sb.setLength(sb.length() - 2);
-        sb.append("]");
+        
+        if (!entry.getValue().isEmpty()) {
+            sb.setLength(sb.length() - 2);
+        }
+        
+        sb.append("]\n");
         keywordOutput = sb.toString();
         return keywordOutput;
     }
