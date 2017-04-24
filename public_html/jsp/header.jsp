@@ -1,7 +1,7 @@
     <header>
 	  <div id="strapline">
 	    <div id="welcome_slogan">
-	      <h3>Welcome To Free HTML5 <span>Streets</span></h3>
+	      <h3>Welcome to my Project Home Page by <span>Tj Hawkins</span></h3>
 	    </div><!--close welcome_slogan-->
       </div><!--close strapline-->	  
 	  <nav>

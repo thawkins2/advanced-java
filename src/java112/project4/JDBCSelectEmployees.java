@@ -90,7 +90,7 @@ public class JDBCSelectEmployees {
      *
      *@param  args  The command line arguments
      *
-     *@since
+     *
      *
      */
     public static void main(String[] args) {

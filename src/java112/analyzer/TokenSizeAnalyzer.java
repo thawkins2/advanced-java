@@ -77,6 +77,7 @@ public class TokenSizeAnalyzer implements Analyzer {
         ) {
             findMaximumSize();
             createTokenSizeReport(out);
+            out.println();
             createHistogramReport(out);
         } catch (FileNotFoundException fileNotFound) {
             fileNotFound.printStackTrace();
@@ -125,11 +126,8 @@ public class TokenSizeAnalyzer implements Analyzer {
      */
     private void createHistogramReport(PrintWriter out) {
 
-        // double calcAsterisks = maximumSize / 73;
         for (Map.Entry <Integer, Integer> size : tokenSizes.entrySet()) {
 
-            // int numOfAsterisks = (int)Math.ceil(size.getValue() / calcAsterisks);
-            // String asterisks = new String(new char[numOfAsterisks]).replace("\0", "*");
             String asterisks = getAsterisks(size.getValue());
 
             out.println(size.getKey() + "\t" + asterisks);
@@ -143,9 +141,9 @@ public class TokenSizeAnalyzer implements Analyzer {
      * @return string of asterisks to be output
      */
     private String getAsterisks(Integer size) {
-        double calcAsterisks = maximumSize / 73.0;
-        int numOfAsterisks = (int)Math.ceil(size / calcAsterisks);
-        return new String(new char [numOfAsterisks] ).replace("\0", "*");
+        double calculateAsterisks = maximumSize / 73.0;
+        int numberOfAsterisks = (int)Math.ceil(size / calculateAsterisks);
+        return new String(new char [numberOfAsterisks] ).replace("\0", "*");
     }
 
 

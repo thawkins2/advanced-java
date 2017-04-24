@@ -17,7 +17,7 @@
     <header>
 	  <div id="strapline">
 	    <div id="welcome_slogan">
-	      <h3>Welcome To Free HTML5 <span>Streets</span></h3>
+	      <h3>Request Data Page by <span>Tj Hawkins</span></h3>
 	    </div><!--close welcome_slogan-->
       </div><!--close strapline-->	  
 	  <nav>
@@ -53,6 +53,7 @@
         <div class="sidebar_item">
             <h2>Project 3</h2>
             <p><a href="/java112/request-servlet">Request Servlet</a></p>
+            <p><a href="/java112/properties-servlet">Properties Servlet</a></p>
         </div><!--close sidebar_item--> 
       </div><!--close sidebar-->
         

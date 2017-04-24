@@ -155,26 +155,54 @@ public class KeywordAnalyzer implements Analyzer {
      */
     private String formatOutput(Map.Entry <String, List <Integer>> entry) {
         String keywordOutput;
-        StringBuilder sb = new StringBuilder();
-        sb.append(entry.getKey() + " =\n[");
-        
-        for (Integer location : entry.getValue()) {
-            sb.append(location);
-            sb.append(", ");
-        }
-        
-        int i = 0;
-        while ((i = sb.indexOf(" ", i + 80)) != -1) {
-            sb.replace(i, i + 1, "\n");
-        }
-        
+        StringBuilder keyword = new StringBuilder();
+        keyword.append(entry.getKey() + " =");
+        keyword.append(System.getProperty("line.separator"));
+        keyword.append("[");
+
+        keyword = keywordBuilder(entry, keyword);
+
+        keyword = formatKeyword(keyword);
+
         if (!entry.getValue().isEmpty()) {
-            sb.setLength(sb.length() - 2);
+            keyword.setLength(keyword.length() - 2);
         }
-        
-        sb.append("]\n");
-        keywordOutput = sb.toString();
+
+
+        keyword.append("]");
+        keyword.append(System.getProperty("line.separator"));
+        keywordOutput = keyword.toString();
         return keywordOutput;
     }
-}
 
+
+    /**
+     * Builds keyword string to be formatted.
+     * @param entry ArrayList of keyword locations
+     * @param keyword Stringbuilder keyword string
+     * @return keyword string
+     */
+    private StringBuilder keywordBuilder(Map.Entry <String, List <Integer>> entry, StringBuilder keyword) {
+        for (Integer location : entry.getValue()) {
+            keyword.append(location);
+            keyword.append(", ");
+        }
+        return keyword;
+    }
+
+
+    /**
+     * Takes in keyword string and formats it correctly.
+     * @param keyword StringBuilder string
+     * @return formatted keyword string
+     */
+    private StringBuilder formatKeyword(StringBuilder keyword) {
+
+        int counter = 0;
+        while ((counter = keyword.indexOf(" ", counter + 80)) != -1) {
+            keyword.replace(counter, counter + 1, System.getProperty("line.separator"));
+        }
+
+        return keyword;
+    }
+}
