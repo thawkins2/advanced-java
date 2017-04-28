@@ -1,6 +1,8 @@
 package java112.employee;
 
 import java.util.*;
+import java.io.*;
+import java.sql.*;
 
 /**
 All sql stuff done here ONLY. JDBC select example, but break it up.
@@ -31,12 +33,15 @@ public class EmployeeDirectory {
     
     public void processQuery() {
   
-        
+        Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
   
         try {
-            Connection connection = connectToDataBase();
+            Class.forName("com.mysql.jdbc.Driver");
+  
+            connection = DriverManager.getConnection(
+                    "jdbc:mysql://localhost/student", "student", "student");
   
             statement = connection.createStatement();
   
@@ -101,24 +106,5 @@ public class EmployeeDirectory {
         }
     }
     
-    private Connection connectToDatabase() {
-        try {
-            Connection connection;
-            Class.forName(properties.getProperty("db.driver"));
-  
-            connection = DriverManager.getConnection(
-                    properties.getProperty("db.url"),
-                    properties.getProperty("db.username"),
-                    properties.getProperty("db.password"));
-            
-            return connection;
-        } catch (ClassNotFoundException classNotFound) {
-            classNotFound.printStackTrace();
-        } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
-        } catch (Exception exception) {
-            System.err.println("General Error");
-            exception.printStackTrace();
-        }
-    }
+    
 }

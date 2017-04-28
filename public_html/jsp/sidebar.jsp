@@ -1,4 +1,4 @@
-	<div id="site_content">		
+
 	  
 	  <div class="sidebar_container">       
 	  

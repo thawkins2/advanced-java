@@ -19,13 +19,15 @@
 	  </div><!--close slideshow-->  	
 	</div><!--close slideshow_container-->   
 	
-<c:import url="jsp/sidebar.jsp" />
-	   
-<c:import url="jsp/content-index.jsp" />
+	<div id="site_content">		
+	
+      <c:import url="jsp/sidebar.jsp" />
+           
+      <c:import url="jsp/content-index.jsp" />
 
 	</div><!--close site_content-->  	
 
-<c:import url="jsp/footer-tag.jsp" />
+	  <c:import url="jsp/footer-tag.jsp" />
 	
   </div><!--close main-->
   
