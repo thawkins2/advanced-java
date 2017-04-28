@@ -100,6 +100,60 @@ public class EmployeeDirectory {
         }
     }
     
+    public void addEmployeeRecord() {
+        try {
+            Employee employee  = new Employee();
+            
+            String firstName = employee.getFirstName();
+            String lastName = employee.getLastName();
+            String socialSecurityNumber = employee.getSocialSecurityNumber();
+            String department = employee.getDepartment();
+            String roomNumber = employee.getRoomNumber();
+            String phoneNumber = employee.getPhoneNumber();
+            
+            connection = getConnection();
+            
+            //statement = connection.createStatement();
+            
+            String queryString = "INSERT INTO employees "
+            + "(first_name, last_name, ssn, dept, room, phone)"
+            + "values ( ?, ?, ?, ?, ?, ? )";
+            
+            PreparedStatement preparedQuery = connection.prepareStatement(queryString);
+            preparedQuery.setString(1, firstName);
+            preparedQuery.setString(2, lastName);
+            preparedQuery.setString(3, socialSecurityNumber);
+            preparedQuery.setString(4, department);
+            preparedQuery.setString(5, roomNumber);
+            preparedQuery.setString(6, phoneNumber);
+            
+            preparedQuery.executeQuery();
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        } catch (Exception exception) {
+            System.err.println("General Error");
+            exception.printStackTrace();
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+  
+                if (statement != null) {
+                    statement.close();
+                }
+  
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException sqlException) {
+                sqlException.printStackTrace();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+        }
+    }
+    
     private Connection getConnection() {
         try {
             Class.forName(properties.getProperty("db.driver"));
