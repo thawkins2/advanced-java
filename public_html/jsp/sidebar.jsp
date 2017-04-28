@@ -5,7 +5,7 @@
 	  	<div class="sidebar">
         <div class="sidebar_item">
             <h2>Project 4</h2>
-            <p></p>         
+            <p><a href="/java112/session-counter">Session Servlet</a></p>
         </div><!--close sidebar_item--> 
       </div><!--close sidebar-->
 	  
