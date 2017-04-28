@@ -13,6 +13,9 @@ to database.
  */
 public class EmployeeDirectory {
     
+    private Connection connection = null;
+    private Statement statement = null;
+    private ResultSet resultSet = null;
     private Properties properties;
     
     /**
@@ -33,16 +36,9 @@ public class EmployeeDirectory {
     
     public void processQuery() {
   
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
+        
   
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-  
-            connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost/student", "student", "student");
-  
             statement = connection.createStatement();
   
             String name = "Smith";
@@ -78,8 +74,6 @@ public class EmployeeDirectory {
   
             System.out.println();
   
-        } catch (ClassNotFoundException classNotFound) {
-            classNotFound.printStackTrace();
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         } catch (Exception exception) {
@@ -104,6 +98,26 @@ public class EmployeeDirectory {
                 exception.printStackTrace();
             }
         }
+    }
+    
+    private Connection getConnection() {
+        try {
+            Class.forName(properties.getProperty("db.driver"));
+  
+            connection = DriverManager.getConnection(
+                    properties.getProperty("db.url"),
+                    properties.getProperty("db.username"),
+                    properties.getProperty("db.password"));
+            
+        } catch (ClassNotFoundException classNotFound) {
+            classNotFound.printStackTrace();
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        } catch (Exception exception) {
+            System.err.println("General Error");
+            exception.printStackTrace();
+        }
+        return connection;
     }
     
     
