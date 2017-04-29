@@ -1,4 +1,4 @@
-<form action="">
+<form method="GET" action="">
   <input type="text" id="searchTerm"></input>
   <br></br>
   <input type="radio" id="firstName" value="firstName">First Name</input>

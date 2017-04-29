@@ -35,9 +35,9 @@ public class EmployeeDirectory {
         
         Object completedSearch;
         
-        if (searchType == "1") {
+        if (searchType == "id") {
             completedSearch = searchById(searchTerm);
-        } else if (searchType == "2") {
+        } else if (searchType == "first") {
             completedSearch = searchByFirstName(searchTerm);
         } else {
             completedSearch = searchByLastName(searchTerm);
