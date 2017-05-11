@@ -26,6 +26,7 @@ public class Employee {
 
     /**
      * Returns the value of employeeId.
+     @return employeeId
      */
     public String getEmployeeId() {
         return employeeId;
@@ -43,6 +44,7 @@ public class Employee {
 
     /**
      * Returns the value of firstName.
+     @return firstName
      */
     public String getFirstName() {
         return firstName;
@@ -60,6 +62,7 @@ public class Employee {
 
     /**
      * Returns the value of lastName.
+     @return lastName
      */
     public String getLastName() {
         return lastName;
@@ -77,6 +80,7 @@ public class Employee {
 
     /**
      * Returns the value of socialSecurityNumber.
+     @return socialSecurityNumber
      */
     public String getSocialSecurityNumber() {
         return socialSecurityNumber;
@@ -94,6 +98,7 @@ public class Employee {
 
     /**
      * Returns the value of department.
+     @return department
      */
     public String getDepartment() {
         return department;
@@ -111,6 +116,7 @@ public class Employee {
 
     /**
      * Returns the value of roomNumber.
+     @return roomNumber
      */
     public String getRoomNumber() {
         return roomNumber;
@@ -128,6 +134,7 @@ public class Employee {
 
     /**
      * Returns the value of phoneNumber.
+     @return phoneNumber
      */
     public String getPhoneNumber() {
         return phoneNumber;
@@ -145,6 +152,7 @@ public class Employee {
 
     /**
      * Returns formatted string output.
+     @return string
      */
     public String toString() {
         return "[id= " + getEmployeeId() + ", firstName= " + getFirstName() + ", lastName= " + getLastName() + ", ssn= " + getSocialSecurityNumber() + ", dept= " + getDepartment() + ", room= " + getRoomNumber() + ", phone= " + getPhoneNumber() + "]";

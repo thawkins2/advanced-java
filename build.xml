@@ -18,6 +18,7 @@
   <property name="project3" value="${src}/java112/project3" />
   <property name="project4" value="${src}/java112/project4" />
   <property name="employee" value="${src}/java112/employee" />
+  <property name="analyzer" value="${src}/java112/analyzer" />
   <property name="config" value="config"/>
   <property name="build" value="build"/>
   <property name="dist" value="dist"/>
@@ -157,7 +158,6 @@
       excludes="*.jsp,
                 *.html,
                 *.xml,
-                java112/analyzer/**,
                 java112/labs1/**,
                 java112/labs2/**,
                 java112/labs3/**,
@@ -226,7 +226,8 @@
                           java112.project3.*,
                           java112.labs3.*,
                           java112.labs4.*,
-                          java112.project4.*"
+                          java112.project4.*,
+                          java112.employee.*"
             sourcepath="${src}"
             classpath="${lib}/servlet-api.jar"
             defaultexcludes="yes"

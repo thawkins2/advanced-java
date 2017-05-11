@@ -29,6 +29,7 @@ public class Search {
 
     /**
      * Returns the value of searchType.
+     @return searchType
      */
     public String getSearchType() {
         return searchType;
@@ -46,6 +47,7 @@ public class Search {
 
     /**
      * Returns the value of searchTerm.
+     @return searchTerm
      */
     public String getSearchTerm() {
         return searchTerm;
@@ -63,6 +65,7 @@ public class Search {
 
     /**
      * Returns the value of queryResults.
+     @return queryResults
      */
     public List<Object> getQueryResults() {
         return queryResults;
@@ -80,6 +83,7 @@ public class Search {
 
     /**
      * Returns the value of foundEmployees.
+     @return foundEmployees
      */
     public boolean getFoundEmployees() {
         return foundEmployees;

@@ -1,6 +1,13 @@
 
 	  
 	  <div class="sidebar_container">       
+	    <div class="sidebar">
+        <div class="sidebar_item">
+            <h2>Analyzer</h2>
+            <p><a href="/java112/upload-file">Upload File</a></p>
+
+        </div><!--close sidebar_item--> 
+      </div><!--close sidebar-->
 	  
 	  	<div class="sidebar">
         <div class="sidebar_item">
