@@ -10,11 +10,11 @@
     <div id="wrap">
       <c:import url="jsp/header.jsp" />
 
-      <c:import url="jsp/menu.jsp" />
+      <c:import url="jsp/sidebar.jsp" />
 
-      <c:import url="content-session-lab.jsp" />
+      <c:import url="jsp/content-session-lab.jsp" />
 
-      <c:import url="jsp/footer.jsp" />
+      <c:import url="jsp/footer-tag.jsp" />
     </div>
   </body>
 </html>

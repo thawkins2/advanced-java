@@ -8,19 +8,18 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
  
 /**
- *  
+ *  Class routes to new employee form.
  *
  *@author    Thomas Hawkins
  */
 @WebServlet(
-    name = "employeeSearch", 
-    urlPatterns = { "/employee-search" }
-)
- 
-public class EmployeeSearchDisplay extends HttpServlet {
+    name = "addEmployee", 
+    urlPatterns = { "/add-employee" }
+) public class AddEmployeePage extends HttpServlet {
  
     /**
      *  Handles HTTP GET requests.
+     Sends us to the add new employee jsp form.
      *
      *@param  request               the HttpRequest
      *@param  response              the HttpResponse
@@ -32,7 +31,7 @@ public class EmployeeSearchDisplay extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
  
-        String urlForward = "/employeeSearch.jsp";
+        String urlForward = "/addEmployee.jsp";
         RequestDispatcher dispatcher
                 = getServletContext().getRequestDispatcher(urlForward);
         dispatcher.forward(request, response);

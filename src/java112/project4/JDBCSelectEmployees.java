@@ -85,14 +85,6 @@ public class JDBCSelectEmployees {
         }
     }
   
-    /**
-     *  The main program for the JDBCSelectWhereExample class
-     *
-     *@param  args  The command line arguments
-     *
-     *
-     *
-     */
     public static void main(String[] args) {
   
         JDBCSelectEmployees employees = new JDBCSelectEmployees();

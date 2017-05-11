@@ -5,6 +5,8 @@
 	  	<div class="sidebar">
         <div class="sidebar_item">
             <h2>Project 4</h2>
+            <p><a href="/java112/add-employee">Add Employee</a></p>
+            <p><a href="/java112/employee-search">Employee Search</a></p>
             <p><a href="/java112/session-counter">Session Servlet</a></p>
         </div><!--close sidebar_item--> 
       </div><!--close sidebar-->

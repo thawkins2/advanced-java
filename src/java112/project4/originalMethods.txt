@@ -1,0 +1,135 @@
+    private List searchById(String searchType, String searchTerm) {
+        List results = null;
+        
+        results = queryDatabase(searchType, searchTerm);
+        return results;
+    }
+    
+    private List searchByFirstName(String searchType, String searchTerm) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        Search search = new Search();
+        ResultSet resultSet = null;
+        
+        
+        try {
+            connection = getConnection(connection);
+            
+            String queryString = "SELECT * FROM employees WHERE first_name LIKE ?";
+            
+            statement = connection.prepareStatement(queryString);
+            statement.setString(1, searchTerm + "%");
+            
+            resultSet = statement.executeQuery();
+            
+            if (resultSet != null) {
+                search.setFoundEmployees(true);
+                
+                while(resultSet.next()) {
+                    Employee employee = new Employee();
+                    
+                    String employee_id = resultSet.getString("emp_id");
+                    System.out.println(employee_id);
+                    employee.setEmployeeId(employee_id);
+                    employee.setFirstName(resultSet.getString("first_name"));
+                    employee.setLastName(resultSet.getString("last_name"));
+                    employee.setSocialSecurityNumber(resultSet.getString("ssn"));
+                    employee.setDepartment(resultSet.getString("dept"));
+                    employee.setRoomNumber(resultSet.getString("room"));
+                    employee.setPhoneNumber(resultSet.getString("phone"));
+                    
+                    search.addEmployee(employee);
+                }
+            } else {
+                search.setFoundEmployees(false);
+            }
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        } catch (Exception exception) {
+            System.err.println("General Error");
+            exception.printStackTrace();
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+  
+                if (statement != null) {
+                    statement.close();
+                }
+  
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException sqlException) {
+                sqlException.printStackTrace();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+        }
+        
+        return search.getQueryResults();
+    }
+    
+    private List searchByLastName(String searchType, String searchTerm) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        Search search = new Search();
+        ResultSet resultSet = null;
+        
+        try {
+            connection = getConnection(connection);
+            
+            String queryString = "SELECT * FROM employees WHERE last_name LIKE ?";
+            
+            statement = connection.prepareStatement(queryString);
+            statement.setString(1, searchTerm + "%");
+            
+            resultSet = statement.executeQuery();
+            
+            if (resultSet != null) {
+                search.setFoundEmployees(true);
+                
+                while(resultSet.next()) {
+                    Employee employee = new Employee();
+                    
+                    employee.setEmployeeId(resultSet.getString("emp_id"));
+                    employee.setFirstName(resultSet.getString("first_name"));
+                    employee.setLastName(resultSet.getString("last_name"));
+                    employee.setSocialSecurityNumber(resultSet.getString("ssn"));
+                    employee.setDepartment(resultSet.getString("dept"));
+                    employee.setRoomNumber(resultSet.getString("room"));
+                    employee.setPhoneNumber(resultSet.getString("phone"));
+                    
+                    search.addEmployee(employee);
+                }
+            } else {
+                search.setFoundEmployees(false);
+            }
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        } catch (Exception exception) {
+            System.err.println("General Error");
+            exception.printStackTrace();
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+  
+                if (statement != null) {
+                    statement.close();
+                }
+  
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException sqlException) {
+                sqlException.printStackTrace();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+        }
+        
+        return search.getQueryResults();
+    }

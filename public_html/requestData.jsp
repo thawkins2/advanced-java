@@ -30,7 +30,7 @@
 	  
 	  <c:import url="jsp/sidebar.jsp" />
 	   
-    <c:import url="content-request-data.jsp" /> 	
+    <c:import url="jsp/content-request-data.jsp" /> 	
 
 	  
    

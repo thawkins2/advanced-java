@@ -23,7 +23,7 @@
 	
       <c:import url="jsp/sidebar.jsp" />
            
-      <c:import url="content-employee-search.jsp" />
+      <c:import url="jsp/content-employee-search.jsp" />
 
 	</div><!--close site_content-->  	
 

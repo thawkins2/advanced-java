@@ -47,7 +47,7 @@ public class Project4SessionLab extends HttpServlet {
              session.setAttribute("project4SessionCounter", sessionCounter);
          }
          
-        String urlForward = "/content-session-lab.jsp";
+        String urlForward = "/project4session.jsp";
         RequestDispatcher dispatcher
                 = getServletContext().getRequestDispatcher(urlForward);
         dispatcher.forward(request, response);
