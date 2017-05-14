@@ -7,10 +7,6 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
- 
 /**
  *  
  *
@@ -20,12 +16,8 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
     name = "uploadFileServlet", 
     urlPatterns = { "/upload-file-servlet" }
 )
-@MultipartConfig(
-    fileSizeThreshold=1024*1024, 
-    maxFileSize=1024*1024*5,
-    maxRequestSize=1024*1024*5*5)
+@MultipartConfig
 public class UploadFileServlet extends HttpServlet {
-    private final String UPLOAD_DIRECTORY = "/output";
 
     /**
      *  Handles HTTP POST requests.
@@ -40,28 +32,61 @@ public class UploadFileServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
 
-        if(ServletFileUpload.isMultipartContent(request)){
-            try {
-                List<FileItem> multiparts = new ServletFileUpload(
-                                        new DiskFileItemFactory()).parseRequest(request);
+        response.setContentType("text/html;charset=UTF-8");
 
-                for(FileItem item : multiparts){
-                    if(!item.isFormField()){
-                        String name = new File(item.getName()).getName();
-                        item.write( new File(UPLOAD_DIRECTORY + File.separator + name));
-                    }
-                }
-               request.setAttribute("message", "File Uploaded Successfully");
-            } catch (Exception ex) {
-               request.setAttribute("message", "File Upload Failed due to " + ex);
+        final String path = "/tmp";
+        final Part filePart = request.getPart("file");
+        final String fileName = getFileName(filePart);
+
+        OutputStream out = null;
+        InputStream filecontent = null;
+        final PrintWriter writer = response.getWriter();
+
+        try {
+            out = new FileOutputStream(new File(path + File.separator
+                    + fileName));
+            filecontent = filePart.getInputStream();
+
+            int read = 0;
+            final byte[] bytes = new byte[1024];
+
+            while ((read = filecontent.read(bytes)) != -1) {
+                out.write(bytes, 0, read);
             }
-        } else {
-            request.setAttribute("message",
-                                 "Sorry this Servlet only handles file upload request");
+            writer.println("New file " + fileName + " created at " + path);
+
+        } catch (FileNotFoundException fne) {
+            writer.println("You either did not specify a file to upload or are "
+                    + "trying to upload a file to a protected or nonexistent "
+                    + "location.");
+            writer.println("<br/> ERROR: " + fne.getMessage());
+
+        } finally {
+            if (out != null) {
+                out.close();
+            }
+            if (filecontent != null) {
+                filecontent.close();
+            }
+            if (writer != null) {
+                writer.close();
+            }
         }
-        request.getRequestDispatcher("/result.jsp").forward(request, response);
+    }
+
+    private String getFileName(final Part part) {
+        final String partHeader = part.getHeader("content-disposition");
+
+        for (String content : part.getHeader("content-disposition").split(";")) {
+            if (content.trim().startsWith("filename")) {
+                return content.substring(
+                        content.indexOf('=') + 1).trim().replace("\"", "");
+            }
+        }
+        return null;
     }
 }
+
 
 
 

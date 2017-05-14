@@ -5,6 +5,7 @@
         <div class="sidebar_item">
             <h2>Analyzer</h2>
             <p><a href="/java112/upload-file">Upload File</a></p>
+            <p><a href="/java112/run-analyzer">Analyzer</a></p>
 
         </div><!--close sidebar_item--> 
       </div><!--close sidebar-->
