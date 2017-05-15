@@ -42,9 +42,9 @@ public class EmployeeDirectory {
      * @param searchType Variable that will determine query used
      * @return completedSearch ArrayList of employees found
      */
-    public List searchEmployeeDatabase(String searchTerm, String searchType) {
+    public Object searchEmployeeDatabase(String searchTerm, String searchType) {
 
-        List completedSearch = null;
+        Object completedSearch = null;
 
         completedSearch = queryDatabase(searchType, searchTerm);
 
@@ -152,7 +152,7 @@ public class EmployeeDirectory {
      * @param searchTerm Data that will be queryed against the search type
      * @return search.getQueryResults() ArrayList of Employees queryed
      */
-    private List queryDatabase(String searchType, String searchTerm) {
+    private Object queryDatabase(String searchType, String searchTerm) {
         Connection connection = null;
         PreparedStatement statement = null;
         Search search = new Search();
@@ -165,15 +165,16 @@ public class EmployeeDirectory {
             queryString = getQueryString(searchType);
 
             statement = connection.prepareStatement(queryString);
-            statement.setString(1, searchTerm + "%");
+            
+            if (searchType.equals("employeeId")) {
+                statement.setString(1, searchTerm);
+            } else {
+                statement.setString(1, searchTerm + "%");
+            }
 
             resultSet = statement.executeQuery();
 
-            if (resultSet != null) {
-                search = buildEmployeeList(resultSet, search);
-            } else {
-                search.setFoundEmployees(false);
-            }
+            buildEmployeeList(resultSet, search);
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         } catch (Exception exception) {
@@ -200,7 +201,7 @@ public class EmployeeDirectory {
                 exception.printStackTrace();
             }
         }
-        return search.getQueryResults();
+        return search;
     }
 
 
@@ -213,7 +214,7 @@ public class EmployeeDirectory {
         String queryString;
 
         if (searchType.equals("employeeId")) {
-            queryString = "SELECT * FROM employees WHERE emp_id LIKE ?";
+            queryString = "SELECT * FROM employees WHERE emp_id = ?";
         } else if (searchType.equals("firstName")) {
             queryString = "SELECT * FROM employees WHERE first_name LIKE ?";
         } else {
@@ -233,9 +234,9 @@ public class EmployeeDirectory {
      */
     private Search buildEmployeeList(ResultSet resultSet, Search search) {
         try {
-            search.setFoundEmployees(true);
 
             while (resultSet.next()) {
+                search.setFoundEmployees(true);
                 Employee employee = new Employee();
 
                 String employee_id = resultSet.getString("emp_id");

@@ -1,7 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<h3>${success}</h3>
-<% session.invalidate(); %>
+<div><h2>Add New Employee</h2></div>
+
 <div>
+    <h3>${success}</h3>
+    <% session.invalidate(); %>
     <form method="POST" action="/java112/add-new-employee">
         <input type="text" name="firstName">First Name</input>
         <br></br>

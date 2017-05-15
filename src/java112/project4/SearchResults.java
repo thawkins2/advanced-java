@@ -38,28 +38,23 @@ urlPatterns = {"/search-results"}
     throws ServletException, IOException {
 
         ServletContext context = getServletContext();
+        HttpSession session = request.getSession();
 
         EmployeeDirectory employeeSearch = (EmployeeDirectory)context.getAttribute("directory");
         String searchTerm = request.getParameter("searchTerm");
         String searchType = request.getParameter("searchType");
-
-        List<Object> searchResults = employeeSearch.searchEmployeeDatabase(searchTerm, searchType);
-        int rows = searchResults.size();
-
-        request.setAttribute("results", searchResults);
-        request.setAttribute("rows", rows);
-
-        if (rows > 0) {
-            String urlForward = "/searchResults.jsp";
-            RequestDispatcher dispatcher
-            = getServletContext().getRequestDispatcher(urlForward);
-            dispatcher.forward(request, response);
-        } else {
-            request.setAttribute("noResults", "0 results found.");
-            String urlForward = "/employeeSearch.jsp";
-            RequestDispatcher dispatcher
-            = getServletContext().getRequestDispatcher(urlForward);
-            dispatcher.forward(request, response);
+        
+        if (searchTerm.isEmpty()) {
+            searchTerm = null;
         }
+
+        Object searchResults = employeeSearch.searchEmployeeDatabase(searchTerm, searchType);
+
+        session.setAttribute("results", searchResults);
+
+        String urlForward = "/searchResults.jsp";
+        RequestDispatcher dispatcher
+        = getServletContext().getRequestDispatcher(urlForward);
+        dispatcher.forward(request, response);
     }
 }

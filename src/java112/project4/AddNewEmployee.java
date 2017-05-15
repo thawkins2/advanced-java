@@ -39,7 +39,8 @@ urlPatterns = {"/add-new-employee"}
     throws ServletException, IOException {
 
         ServletContext context = getServletContext();
-
+        HttpSession session = request.getSession();
+        
         EmployeeDirectory addEmployee = (EmployeeDirectory)context.getAttribute("directory");
 
         String firstName = request.getParameter("firstName");
@@ -49,15 +50,16 @@ urlPatterns = {"/add-new-employee"}
         String roomNumber = request.getParameter("roomNumber");
         String phoneNumber = request.getParameter("phoneNumber");
 
-        int result = addEmployee.addEmployeeRecord(        firstName, lastName, socialSecurityNumber,
+        int result = addEmployee.addEmployeeRecord(firstName, lastName, socialSecurityNumber,
         department, roomNumber, phoneNumber);
 
         if (result > 0) {
-            HttpSession session = request.getSession();
             session.setAttribute("success", "Employee added to the database.");
-
-            String url = "/java112/addEmployee.jsp";
-            response.sendRedirect(url);
+        } else {
+            session.setAttribute("success", "Error adding employee to database.");
         }
+        
+        String url = "/java112/addEmployee.jsp";
+        response.sendRedirect(url);
     }
 }

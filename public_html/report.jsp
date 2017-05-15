@@ -2,7 +2,7 @@
 
 <!DOCTYPE html> 
 <html>
-<c:set var="pageTitle" value="Add new Employee" scope="session" />
+<c:set var="pageTitle" value="Analyzer Results" scope="session" />
 <c:import url="jsp/head-tag.jsp" />
 
 <body>
@@ -14,7 +14,7 @@
 	
       <c:import url="jsp/sidebar.jsp" />
            
-      <c:import url="jsp/content-add-employee.jsp" />
+      <c:import url="jsp/content-report.jsp" />
 
 	</div><!--close site_content-->  	
 

@@ -155,7 +155,10 @@ public class Employee {
      @return string
      */
     public String toString() {
-        return "[id= " + getEmployeeId() + ", firstName= " + getFirstName() + ", lastName= " + getLastName() + ", ssn= " + getSocialSecurityNumber() + ", dept= " + getDepartment() + ", room= " + getRoomNumber() + ", phone= " + getPhoneNumber() + "]";
+        return "[id= " + getEmployeeId() + ", firstName= " + getFirstName() +
+        ", lastName= " + getLastName() + ", ssn= " + getSocialSecurityNumber() +
+        ", dept= " + getDepartment() + ", room= " + getRoomNumber() + ", phone= " +
+        getPhoneNumber() + "]";
     }
 }
 

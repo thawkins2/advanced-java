@@ -34,6 +34,8 @@ public class UploadFileServlet extends HttpServlet {
 
         response.setContentType("text/html;charset=UTF-8");
 
+        HttpSession session = request.getSession();
+
         final String path = "/tmp";
         final Part filePart = request.getPart("file");
         final String fileName = getFileName(filePart);
@@ -53,7 +55,13 @@ public class UploadFileServlet extends HttpServlet {
             while ((read = filecontent.read(bytes)) != -1) {
                 out.write(bytes, 0, read);
             }
-            writer.println("New file " + fileName + " created at " + path);
+
+            session.setAttribute("textFile", fileName);
+
+            String urlForward = "/uploadFile.jsp";
+            RequestDispatcher dispatcher
+                    = getServletContext().getRequestDispatcher(urlForward);
+            dispatcher.forward(request, response);
 
         } catch (FileNotFoundException fne) {
             writer.println("You either did not specify a file to upload or are "

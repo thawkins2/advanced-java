@@ -1,9 +1,5 @@
-
 <div>
-    <h2 style="color:red">${noResults}</h2>
-</div>
-
-<div>
+<h2>Search Employee Database</h2>
     <form method="GET" action="/java112/search-results">
       <input type="text" name="searchTerm"></input>
       <br></br>

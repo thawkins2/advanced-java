@@ -33,35 +33,12 @@ urlPatterns = {"/display-analyzer-reports"}
     public void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
 
-        String report = "";
         String selectedReport = request.getParameter("analyzerReports");
-        try (BufferedReader input = new BufferedReader(new FileReader(selectedReport))
-        ) {
+        String reportLocation = "File://" + request.getParameter("analyzerReports");
 
-            StringBuilder sb = new StringBuilder();
-            String line;
+        request.setAttribute("analyzerReport", reportLocation);
 
-            while (input.ready()) {
-                line = input.readLine();
-                sb.append(line + "\n");
-            }
-
-            report = sb.toString();
-        } catch (FileNotFoundException fileNotFound) {
-            fileNotFound.printStackTrace();
-        } catch (IOException ioException) {
-            ioException.printStackTrace();
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
-
-        if (report == null || report.isEmpty()) {
-            request.setAttribute("report", "failed");
-        }
-
-        request.setAttribute("analyzer", report);
-
-        String urlForward = "/analyzerResults.jsp";
+        String urlForward = "/report.jsp";
         RequestDispatcher dispatcher
         = getServletContext().getRequestDispatcher(urlForward);
         dispatcher.forward(request, response);

@@ -23,6 +23,7 @@
   <property name="dist" value="dist"/>
   <property name="lib" value="lib"/>
   <property name="WEB-INF" value="${build}/WEB-INF"/>
+  <property name="WEB-INF-LIB" value="${build}/WEB-INF/lib"/>
   <property name="META-INF" value="${build}/META-INF"/>
   <property name="web_classes" value="${WEB-INF}/classes"/>
   <property name="build.compiler" value="modern"/>
@@ -100,7 +101,7 @@
           java112/project2/**, 
           java112/project3/**,
           java112/tests/**,
-          java112/employee/**
+          java112/employee/**,
           java112/analyzer/**"
         deprecation="on"
         debug="on"
@@ -160,7 +161,8 @@
                 java112/labs2/**,
                 java112/labs3/**,
                 java112/labs4/**,
-                java112/tests/**"
+                java112/tests/**,
+                java112/analyzer/**"
       deprecation="on"
       debug="on"
       includeAntRuntime="false"
@@ -173,7 +175,7 @@
       <fileset dir="${config}"/>
     </copy>
     
-    <copy file="lib/analyzer.jar" todir="${build}/WEB-INF/lib"/>
+    <copy file="${analyzer_lib}" todir="${WEB-INF-LIB}"/>
 
     <!-- copy the images to the build/images dir-->
     <copy todir="${build}/images">

@@ -36,10 +36,12 @@ urlPatterns = {"/run-analyzer"}
      */
     public void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-
+        
+        HttpSession session = request.getSession();
         String[] arguments = new String [2];
-
-        arguments[0] = "/tmp/bigFile.txt";
+        String fileName = (String) session.getAttribute("textFile");
+        
+        arguments[0] = "/tmp/" + fileName;
         arguments[1] = "/webanalyzer.properties";
 
         AnalyzeFile analyzer = new AnalyzeFile();

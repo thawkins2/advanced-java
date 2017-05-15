@@ -32,7 +32,7 @@ public class UploadFile extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
  
-         String urlForward = "/uploadFile.jsp";
+        String urlForward = "/uploadFile.jsp";
         RequestDispatcher dispatcher
                 = getServletContext().getRequestDispatcher(urlForward);
         dispatcher.forward(request, response);
