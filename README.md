@@ -1,25 +1,27 @@
-# projects-start
 
-> The starting project for the semester. Everything will go in here.
+## Welcome to my Advanced Java Project
 
-## Welcome to Advanced Java
+This project consisted of two parts, the Analyzer and a web development portion. All source code management
+was done with GitHub.
 
-#### Start This Project
+## Analyzer
+Analyzer program takes a text file in from the command line. It them parses the file, analyzes each token,
+and creates various reports. Using I/O, a line is read and sorted into an array of tokens. Looping through
+the array, each token is passed into the various analyzer report methods and processed accordingly. Java
+properties were used for setting the report locations as they are being created.
 
-- Open a terminal window and make sure you are in your home directory.
-- Copy the following command.
-    - `$ git clone git@github.com:madcol-advjava-s17/projects-start.git projetsGH`
-- Paste it into your terminal with `Shift-Control-V`.
-- Press the return key. You should see this output.
+# Reports
+Summary Report - Information about me, the class, date and time the report was run, and total number of tokens processed.
+Most of the information for this report was found in the properties file. Only the total number of tokens was calculated as the file was processed. 
 
+Unique Tokens - List of each unqiue token found in the text file. TreeSet<String> was used so there were no duplicate tokens
+found within the list and for the natrual sorting.
 
-        Cloning into 'projects'...
-        remote: Counting objects: 4, done.
-        remote: Compressing objects: 100% (4/4), done.
-        remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
-        Receiving objects: 100% (4/4), done.
-        Checking connectivity... done.
+Big Words - Using a property value, this report contains all tokens that are at least the value or more. This analyzer
+also used a TreeSet<String> for no duplicate tokens and the natural sorting.
 
-- Navigate into the new `projectsGH` directory and look around. 
+Token Count - Each token and the number of times it is found within the file. TreeMap was used for this report
 
-#### More to come...
+Token Size - The distribution of token lengths found within the document and a simple histogram chart displaying
+the distribution
+
