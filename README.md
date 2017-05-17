@@ -13,7 +13,9 @@ properties were used for setting the report locations as they are being created.
 
 ### Directory Structure
 src/java112/analyzer - Analyzer java files
+
 output/ - Analyzer reports and keyword text file
+
 config/ - Properties file
 
 ### Reports
@@ -57,12 +59,16 @@ linux's local temp file.
 
 ### Directory Structure
 src/java112/employee - Contains our employee object, search object, and the employee directory.
+
 public_html/ - Contains all our jsp files with all partials found in the jsp folder.
+
 src/java112/project4 - Servlets for grabbing form data, calling the correct class methods, and forwarding/redirecting.
 
 ### Employee
 Employee - Used to create the employee object for the applet.
+
 Search - Search object used to return the list of employees returned from a query and if employees were found or not.
+
 EmployeeDirectory - Takes in the search term and search type from the web form. Uses these to search the database for
 employees based on what was sent by the form. Returns a search object with the search results. There is also a method
 for adding a new employee and returns a success or error message to be displayed.
