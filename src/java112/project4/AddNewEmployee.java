@@ -40,7 +40,7 @@ urlPatterns = {"/add-new-employee"}
 
         ServletContext context = getServletContext();
         HttpSession session = request.getSession();
-        
+
         EmployeeDirectory addEmployee = (EmployeeDirectory)context.getAttribute("directory");
 
         String firstName = request.getParameter("firstName");
@@ -50,15 +50,11 @@ urlPatterns = {"/add-new-employee"}
         String roomNumber = request.getParameter("roomNumber");
         String phoneNumber = request.getParameter("phoneNumber");
 
-        int result = addEmployee.addEmployeeRecord(firstName, lastName, socialSecurityNumber,
+        String message = addEmployee.addEmployeeRecord(firstName, lastName, socialSecurityNumber,
         department, roomNumber, phoneNumber);
 
-        if (result > 0) {
-            session.setAttribute("success", "Employee added to the database.");
-        } else {
-            session.setAttribute("success", "Error adding employee to database.");
-        }
-        
+        session.setAttribute("success", message);
+
         String url = "/java112/addEmployee.jsp";
         response.sendRedirect(url);
     }

@@ -3,7 +3,7 @@
 
 <div>
     <h3>${success}</h3>
-    <% session.invalidate(); %>
+    <% session.removeAttribute("success"); %>
     <form method="POST" action="/java112/add-new-employee">
         <input type="text" name="firstName">First Name</input>
         <br></br>

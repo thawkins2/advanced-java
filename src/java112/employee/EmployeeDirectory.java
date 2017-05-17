@@ -63,7 +63,7 @@ public class EmployeeDirectory {
      * @param phoneNumber New employee phone number
      * @return result number of rows created
      */
-    public Integer addEmployeeRecord(String firstName, String lastName,
+    public String addEmployeeRecord(String firstName, String lastName,
     String socialSecurityNumber, String department,
     String roomNumber, String phoneNumber) {
 
@@ -115,7 +115,11 @@ public class EmployeeDirectory {
                 exception.printStackTrace();
             }
         }
-        return result;
+        if (result > 0) {
+            return "New employee added successfully.";
+        } else {
+            return "Error adding new employee.";
+        }
     }
 
 

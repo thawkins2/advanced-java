@@ -57,6 +57,7 @@ public class UploadFileServlet extends HttpServlet {
             }
 
             session.setAttribute("textFile", fileName);
+            session.setAttribute("uploadFile", fileName + " was successfully uploaded!");
 
             String urlForward = "/uploadFile.jsp";
             RequestDispatcher dispatcher
