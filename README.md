@@ -1,8 +1,7 @@
 
 # Welcome to my Advanced Java Project
 
-This project consisted of two parts, the Analyzer program and applet development with Java EE and Tomcat. All source code management
-was done with GitHub.
+This project consisted of two parts, the Analyzer program and applet development with Java EE and Tomcat. Development was done in an Ubuntu environment and git was used as our CMS.
 
 
 ## Analyzer
